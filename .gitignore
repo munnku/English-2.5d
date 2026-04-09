@@ -1,0 +1,25 @@
+# 依存関係
+node_modules/
+
+# ビルド成果物
+dist/
+
+# 環境変数（秘密情報を含むためGit管理対象外）
+.env
+.env.local
+.env.*.local
+
+# エディター設定
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# テストカバレッジ
+coverage/

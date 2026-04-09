@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  ci:
+    name: 型チェック + テスト + ビルド
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js セットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 依存関係インストール
+        run: npm ci --legacy-peer-deps
+
+      - name: 型チェック
+        run: npm run type-check
+
+      - name: テスト実行
+        run: npm run test
+
+      - name: ビルド確認
+        run: npm run build
